@@ -5,6 +5,6 @@ Reference Diagram:
 
 This RISC-V 32 bit single cycle processor supports a subset of the RV32I instruction set.
 
-Spesifically, it supports:
+Specifically, it supports:
 
 R, I, S and B type instructions.
