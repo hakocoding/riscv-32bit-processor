@@ -3,7 +3,7 @@ module programcounter(
 input logic [31:0] pcNext,
 input logic clk,
 output logic [31:0] pc,
-input reset
+input logic reset
 
 );
 

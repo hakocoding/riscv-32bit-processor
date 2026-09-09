@@ -19,6 +19,7 @@ case(resultSrc)
 2'b00: result = aluResult;
 2'b01: result = memoryReadData;
 
+endcase
 end
 
 endmodule

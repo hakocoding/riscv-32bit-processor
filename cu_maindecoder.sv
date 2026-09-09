@@ -65,7 +65,7 @@ end
                 aluSrc    = 1'b1;
                 memWrite  = 1'b0;
                 resultSrc = 1'b0; 
-                branch    = 1'0;
+                branch    = 1'b0;
                 aluOp     = 2'b10;
             end
 

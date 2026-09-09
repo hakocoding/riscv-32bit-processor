@@ -40,13 +40,14 @@ aluControl = 3'b001;
     3'b111: aluControl = 3'b011; 
         
     default: aluControl = 3'b000;
+
+    
  endcase
     
-default: aluControl = 3'b000;
 
 end
 
-
+default: aluControl = 3'b000;
 
 endcase
 end

@@ -1,7 +1,7 @@
 module alu(
     input logic [31:0] A, 
     input logic [31:0] B, 
-    input logic [1:0] cntrl,
+    input logic [2:0] cntrl,
     output logic [31:0] result, 
     output logic zero
 

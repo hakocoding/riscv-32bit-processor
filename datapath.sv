@@ -7,10 +7,10 @@ input logic aluSrc,
 input logic pcSrc,
 input logic regWrite,
 input logic memWrite,
-input logic resultSrc
+input logic resultSrc,
 
 output logic zero,
-output logic instruction[31:0]
+output logic [31:0] instruction
 );
 
 logic [31:0] pcNext;
@@ -27,20 +27,20 @@ logic [31:0] immExt;
 
 
 
-adder1 adder1(
+adder1 a_adder1(
 
     .pc(pc),
     .pcPlus4(pcPlus4)
 );
 
-adder2 adder2(
+adder2 a_adder2(
 
     .pc(pc),
-    .immExtl(immExt),
+    .immExt(immExt),
     .pcTarget(pcTarget)
 );
 
-dmem data_memory(
+dmem a_data_memory(
 
     .clk(clk),
     .we(memWrite),
@@ -49,33 +49,33 @@ dmem data_memory(
     .rd(readData)
 );
 
-extender extender(
+extender a_extender(
     .instruction(instruction[31:7]),
     .immSrc(immSrc),
     .immOut(immExt)
 
 );
-imem instructionMemory(
+imem a_instructionMemory(
     .a(pc),
     .rd(instruction)
 
 );
 
-mux1 mux1(
+mux1 a_mux1(
     .pcSrc(pcSrc),
     .pcPlus4(pcPlus4),
     .pcTarget(pcTarget),
     .pcNext(pcNext)
 );
 
-mux2 mux2(
+mux2 a_mux2(
     .rd2(writeData),
     .srcB(srcB),
     .immExt(immExt),
     .aluSrc(aluSrc)
 );
 
-mux3 mux3(
+mux3 a_mux3(
     .pcPlus4(pcPlus4),
     .memoryReadData(readData),
     .aluResult(aluResult),
@@ -83,14 +83,15 @@ mux3 mux3(
     .result(result)
 );
 
-programcounter programcounter(
+programcounter a_programcounter(
     .pcNext(pcNext),
     .pc(pc),
-    .clk(clk)
+    .clk(clk),
+    .reset(reset)
 
 );
 
-register register(
+register a_register(
 
 
 .a1(instruction[19:15]),
@@ -104,10 +105,13 @@ register register(
 
 );
 
-alu alu(
+alu a_alu(
     .A(srcA), 
     .B(srcB), 
     .cntrl(aluControl),
-    .result(result),
+    .result(aluResult),
     .zero(zero)
 );
+
+
+endmodule
